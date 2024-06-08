@@ -145,7 +145,7 @@ app.post("/webhook", (req, res) => {
     console.warn(
       `Received Messenger "page" object instead of "instagram" message webhook.`
     );
-    res.sendStatus(404);
+    res.status(200).send("EVENT_RECEIVED");
   } else {
     // Return a '404 Not Found' if event is not recognized
     console.warn(`Unrecognized POST to webhook.`);
