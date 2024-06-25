@@ -155,7 +155,7 @@ app.post("/webhook", (req, res) => {
 // Verify that the callback came from Facebook.
 function verifyRequestSignature(req, res, buf) {
   const signature = req.headers["x-hub-signature"];
-
+  console.log("headers", req.headers);
   if (!signature) {
     console.warn(`Couldn't find "x-hub-signature" in headers.`);
   } else {
@@ -231,7 +231,7 @@ async function main() {
   await GraphApi.setPersistentMenu(persistentMenu);
 
   // Set our page subscriptions
-  // await GraphApi.setPageSubscriptions();
+  await GraphApi.setPageSubscriptions();
 
   // Listen for requests :)
   app.listen(parseInt(process.env.PORT) || 3000, function() {
