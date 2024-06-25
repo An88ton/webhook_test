@@ -231,7 +231,7 @@ async function main() {
   await GraphApi.setPersistentMenu(persistentMenu);
 
   // Set our page subscriptions
-  await GraphApi.setPageSubscriptions();
+  // await GraphApi.setPageSubscriptions();
 
   // Listen for requests :)
   app.listen(parseInt(process.env.PORT) || 3000, function() {
