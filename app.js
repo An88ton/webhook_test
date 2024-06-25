@@ -50,7 +50,6 @@ app.all("*", function(req, res, next) {
   next();
 });
 
-console.log('HERE: ', process.env.VERIFY_TOKEN)
 // Respond with index file when a GET request is made to the homepage
 app.get("/", function(_req, res) {
   res.sendFile(path.join(__dirname, "public/index.html"));
@@ -85,7 +84,7 @@ app.get("/webhook", (req, res) => {
 // Called whenever messages occur in the conversation.
 app.post("/webhook", (req, res) => {
   let body = req.body;
-  console.log('LET YOU KNOW')
+  console.log("LET YOU KNOW");
   console.log(`\u{1F7EA} Received webhook:`);
   console.dir(body, { depth: null });
 
@@ -232,11 +231,13 @@ async function main() {
   await GraphApi.setPersistentMenu(persistentMenu);
 
   // Set our page subscriptions
-  await GraphApi.setPageSubscriptions();
+  // await GraphApi.setPageSubscriptions();
 
   // Listen for requests :)
-  var listener = app.listen(parseInt(process.env.PORT) || 5000, function() {
-    console.log(`The app is listening on port ${parseInt(process.env.PORT) || 5000}`);
+  app.listen(parseInt(process.env.PORT) || 3000, function() {
+    console.log(
+      `The app is listening on port ${parseInt(process.env.PORT) || 3000}`
+    );
   });
 }
 
